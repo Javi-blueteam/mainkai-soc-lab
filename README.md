@@ -22,7 +22,7 @@ companies begin - and defends it:
 | --- | --- |
 | Domain controller (Active Directory, DNS) | DC01 - Windows Server 2022 |
 | Employee workstation | WS01 - Windows 11 Enterprise |
-| SIEM (log collection and detection) | ELK01 - Elastic Stack (from Sprint 2) |
-| Attacker | Kali Linux (from Sprint 3) |
+| SIEM (log collection and detection) | ELK01 - Elastic Stack |
+| Attacker | Kali Linux |
 
 Write-ups follow every two weeks.
