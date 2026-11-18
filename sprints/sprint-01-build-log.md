@@ -57,3 +57,8 @@ Chronological record of building the Mainkai lab: what I did, what didn't go as 
 - **Did:** Enabled Sysmon and loaded it with a custom configuration `sysmonconfig.xml` (from github.com/olafhartong/sysmon-modular)
 - **Problem:** tried to move a file to a directory / location that didn't exist yet
 - **Fix:** create the directory first, then move the file
+
+## 2026-11-18: Snapshot rollback blocked by automatic ZFS snapshots
+- **Did:** Triggered a series of events to see how they were logged and resurfaced through Event Viewer. Tried to roll back WS01 to `s07-before-events` at the end of the day
+- **Problem:** Proxmox refused: "s07-before-events is not most recent snapshot", although it was the newest in Proxmox's list
+- **Fix:** excluded the lab (`zfs set com.sun:auto-snapshot=false photos/lab`, inherited by all VM disks), deleted the existing automatic snapshots on the lab disks (dry run with `zfs destroy -nv` first), then rolled back successfully. `zfs-auto-snapshot` had been snapshotting all VM disks every 15 minutes. ZFS can only roll back to the newest snapshot
